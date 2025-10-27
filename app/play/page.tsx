@@ -96,11 +96,38 @@
         configurarAudio(index + 1);
     };
     const voltarMusica = () => {
-        configurarAudio(index - 1);
+        const novoIndex = index === 0 ? musics.length - 1 : index - 1;
+        configurarAudio(novoIndex);
     }
-
+    const avanca10 =() => {
+        if (audio) {
+            audio.currentTime += 10;
+        }
+    }
+    const volta10 =() => {
+        if (audio) {
+            audio.currentTime -= 10;
+        }
+    }
     return (
         <div className="bg-[rgb(15,19,22)] flex items-center justify-center h-screen">
+            <div className="absolute left-50 items-center justify-center flex flex-col gap-10 h-[440px] w-[150px] bg-[rgb(32,40,48)] rounded-[10px]">
+                {musics.map((music, index) => (
+                    <button
+                        key={music.url}
+                        onClick={() => configurarAudio(index)}
+                        className="font-bold text-sm flex flex-col items-center justify-center"
+                    >
+                        <Image
+                            src={music.image}
+                            alt={music.name}
+                            width={80}
+                            height={80}
+                            />
+                            <h1 className="text-center"> {music.name} </h1>
+                    </button>
+                ))}
+            </div>
         <div className="bg-[rgb(32,40,48)] h-[440px] w-[300px] rounded-[10px] flex flex-col items-center justify-center">
             <Image
             src={currentMusic.image}
@@ -109,8 +136,7 @@
             height={200}
             />
             <h1 className="text-white text-[16px] font-bold mt-4">{currentMusic.name}</h1>
-            <h3 className="text-[gray] text-[12px] font-bold mt-2">{currentMusic.artista}</h3>
-
+            <h3 className="text-[gray] text-[12px] font-bold mt-2">{currentMusic.artista}</h3>    
             <div className="w-[50%] mt-4">
             <div className="">
             </div>
@@ -135,15 +161,20 @@
                 onClick={voltarMusica}>
                     <StepForward className="scale-x-[-1] cursor-pointer" />
             </button>
-            <FastForward className="scale-x-[-1] cursor-pointer" />
-
+            <button
+                onClick={volta10}>
+                    <FastForward className="scale-x-[-1] cursor-pointer" />
+            </button>
             <button
                 className="text-white w-[36px] h-[36px] rounded-full bg-[#ff302e] flex items-center justify-center cursor-pointer"
                 onClick={playPause}
             >
                 {isPlaying ? <Pause /> : <PlayIcon />}
             </button>
-            <FastForward className="cursor-pointer" />
+            <button
+                onClick={avanca10}>
+                    <FastForward className="cursor-pointer" />
+            </button>
             <button
                 onClick={avancarMusica}>
             <StepForward className="cursor-pointer" />
