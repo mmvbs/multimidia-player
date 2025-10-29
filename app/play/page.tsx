@@ -110,7 +110,7 @@
         }
     }
     return (
-        <div className="bg-[rgb(15,19,22)] flex items-center justify-center h-screen">
+        <div className="bg-[rgb(15,19,22)] flex items-center justify-center h-screen text-white">
             <div className="absolute left-50 items-center justify-center flex flex-col gap-10 h-[440px] w-[150px] bg-[rgb(32,40,48)] rounded-[10px]">
                 {musics.map((music, index) => (
                     <button
