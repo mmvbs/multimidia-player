@@ -2,7 +2,7 @@
 
     import { useEffect, useState } from "react";
     import Image from "next/image";
-    import { Play as PlayIcon, Pause, VolumeX, Volume2, FastForward, StepForward } from "lucide-react";
+    import { PlayIcon, Pause, VolumeX, Volume2, FastForward, StepForward } from "lucide-react";
     import musics from "../data/data";
 
     export default function Player() {
