@@ -110,25 +110,38 @@
         }
     }
     return (
-        <div className="bg-[rgb(15,19,22)] flex items-center justify-center h-screen text-white">
-            <div className="absolute left-2 p-2 items-start flex flex-col content-start gap-2 h-[440px] w-[300px] bg-[rgb(32,40,48)] rounded-[10px]">
-                {musics.map((music, index) => (
+        <div className="bg-[rgb(15,19,22)] flex flex-col md:flex-row items-center md:items-start justify-center min-h-screen text-white gap-4 p-4">
+            <div className="p-2 flex flex-col gap-2 w-full md:w-[300px] max-h-[440px] bg-[rgb(32,40,48)] rounded-[10px] overflow-y-auto">
+                
+                {musics.map((music, i) => (
                     <button
-                    key={music.url}
-                    onClick={() => configurarAudio(index)}
-                    className="relative font-bold text-sm flex items-center hover:bg-[rgb(50,58,66)] cursor-pointer rounded-[10px] w-full p-2 group hover:grayscale-50"
+                        key={music.url}
+                        onClick={() => configurarAudio(i)}
+                        className="relative font-bold text-sm flex items-center hover:bg-[rgb(50,58,66)] cursor-pointer rounded-[10px] w-full p-2 group  hover:grayscale-[50%]"
                     >
-                        <PlayIcon className=" opacity-0 absolute left-7 group-hover:opacity-100 left-[calc(25px/2+0.5rem)]" />
-                        <Image
-                            src={music.image}
-                            alt={music.name}
-                            width={50}
-                            height={50}
+                        <div className="relative w-[50px] h-[50px]  hover:grayscale-[50%]">
+                            <Image
+                                src={music.image}
+                                alt={music.name}
+                                width={50}
+                                height={50}
                             />
-                            <div className="ml-2 flex flex-col content-start">
-                                <h1 className="text-center"> {music.name} </h1>
-                                <h1 className="text-center text-[gray] text-[12px]"> {music.artista} </h1>
-                            </div>
+
+                            <PlayIcon
+                                className="
+                                    absolute inset-0 m-auto 
+                                    opacity-0 
+                                    group-hover:opacity-100 
+                                    transition 
+                                    pointer-events-none
+                                "
+                            />
+                        </div>
+
+                        <div className="ml-2 flex flex-col text-left">
+                            <h1>{music.name}</h1>
+                            <h1 className="text-[gray] text-[12px]">{music.artista}</h1>
+                        </div>
                     </button>
                 ))}
             </div>
