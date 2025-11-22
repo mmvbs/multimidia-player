@@ -111,20 +111,24 @@
     }
     return (
         <div className="bg-[rgb(15,19,22)] flex items-center justify-center h-screen text-white">
-            <div className="absolute left-50 items-center justify-center flex flex-col gap-10 h-[440px] w-[150px] bg-[rgb(32,40,48)] rounded-[10px]">
+            <div className="absolute left-2 p-2 items-start flex flex-col content-start gap-2 h-[440px] w-[300px] bg-[rgb(32,40,48)] rounded-[10px]">
                 {musics.map((music, index) => (
                     <button
-                        key={music.url}
-                        onClick={() => configurarAudio(index)}
-                        className="font-bold text-sm flex flex-col items-center justify-center"
+                    key={music.url}
+                    onClick={() => configurarAudio(index)}
+                    className="relative font-bold text-sm flex items-center hover:bg-[rgb(50,58,66)] cursor-pointer rounded-[10px] w-full p-2 group hover:grayscale-50"
                     >
+                        <PlayIcon className=" opacity-0 absolute left-7 group-hover:opacity-100 left-[calc(25px/2+0.5rem)]" />
                         <Image
                             src={music.image}
                             alt={music.name}
-                            width={80}
-                            height={80}
+                            width={50}
+                            height={50}
                             />
-                            <h1 className="text-center"> {music.name} </h1>
+                            <div className="ml-2 flex flex-col content-start">
+                                <h1 className="text-center"> {music.name} </h1>
+                                <h1 className="text-center text-[gray] text-[12px]"> {music.artista} </h1>
+                            </div>
                     </button>
                 ))}
             </div>
