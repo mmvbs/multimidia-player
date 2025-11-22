@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Multimidia Player",
   description: "meu projeto de player multimidia feito com Next.js",
   icons: {
-    icon: "/play.ico",
+    icon: "./play.ico",
   },
 };
 
